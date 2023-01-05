@@ -9,41 +9,35 @@
 
 <style>
 
+*{
+   padding: 0;
+   margin: 0;
+   box-sizing: border-box;
+   justify-content: center;
+}
+
 #chessboard {
-   width: 400px;
-   height: 400px;
-   border: 1px solid black;
+   display: grid;
+   max-height: 100vh;
+   grid-template-columns: repeat(8 , 12.5vh);
+}
+
+@media screen and (max-width: 600px) {
+        #chessboard {
+          grid-template-columns: repeat(8, 12.5vw);
+        }
 }
 
 .chess-square {
-   float: left;
-   width: 50px;
-   height: 50px;
+   aspect-ratio: 1/1;
    background-color: #fff;
-}
-
-@media only screen and(max-width : 500px) {
-
-      #chessboard {
-      display: grid;
-      width: 100vh;
-      height: 100vh;
-      }
-
-      .chess-square {
-         display: grid;
-         float: left;
-         width: 25px;
-         height: 25px;
-         background-color: #fff;
-      }
 }
 
 </style>
 </head>
 <body>
 
-<div id="chessboard" class="">
+<div id="chessboard">
 </div>
 
 <script>
@@ -53,17 +47,13 @@
       for (let j = 0; j < 8; j++) 
       {
          let chessSquare = document.createElement('div');
-
          chessSquare.className = 'chess-square';
-
          if ((i + j) % 2 == 0) 
          {
             chessSquare.style.backgroundColor = '#000';
-            chessSquare.style.display = 'flex';
          }
-         chessboard.appendChild(chessSquare);      
+         chessboard.appendChild(chessSquare);
       }
    }
 </script>
 </body>
-</html>
